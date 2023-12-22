@@ -131,7 +131,13 @@ def index():
                         # Notify the client that the conversion is complete
                         socketio.emit('conversion_completed', namespace='/test')
 
-                        return send_file(mp3_filename, as_attachment=True)
+                        response = send_file(mp3_filename, as_attachment=True)
+
+                        # Remove the uploaded pptx file
+                        uploaded_file_path = os.path.join(uploads_dir, pptx_file.filename)
+                        os.remove(uploaded_file_path)
+
+                        return response
 
         return render_template('index.html')
     except Exception as e:
