@@ -107,7 +107,7 @@ def process_pptx_file(pptx_file):
                 if mp3_fp:
                     mp3_filename = os.path.join(uploads_dir, pptx_file.filename + '.mp3')
                     save_mp3(mp3_fp, mp3_filename)
-                    # Delete the processed pptx file
+                                        # Delete the processed pptx file
                     os.remove(temp_file_path)
                     return mp3_filename
     except Exception as e:
@@ -131,13 +131,7 @@ def index():
                         # Notify the client that the conversion is complete
                         socketio.emit('conversion_completed', namespace='/test')
 
-                        response = send_file(mp3_filename, as_attachment=True)
-
-                        # Remove the uploaded pptx file
-                        uploaded_file_path = os.path.join(uploads_dir, pptx_file.filename)
-                        os.remove(uploaded_file_path)
-
-                        return response
+                        return send_file(mp3_filename, as_attachment=True)
 
         return render_template('index.html')
     except Exception as e:
