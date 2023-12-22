@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PPT to MP3 Converter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.js"></script>
+    <script src="/static/script.js"></script>
+</head>
+<body>
+    <h1>PPT to MP3 Converter</h1>
+    <p>Convert your PowerPoint presentations to MP3 audio files.</p>
+    <form method="POST" action="/" enctype="multipart/form-data">
+        <label for="pptx_file">Upload a PowerPoint file (.pptx):</label><br>
+        <input type="file" name="pptx_file" accept=".pptx">
+        <button type="submit">Convert to MP3</button>
+    </form>
+    <p id="conversion-status"></p>
+</body>
+</html>
