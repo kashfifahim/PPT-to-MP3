@@ -107,6 +107,8 @@ def process_pptx_file(pptx_file):
                 if mp3_fp:
                     mp3_filename = os.path.join(uploads_dir, pptx_file.filename + '.mp3')
                     save_mp3(mp3_fp, mp3_filename)
+                    # Delete the processed pptx file
+                    os.remove(temp_file_path)
                     return mp3_filename
     except Exception as e:
         logging.error(f'Error in process_pptx_file: {e}')
